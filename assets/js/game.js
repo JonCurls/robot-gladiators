@@ -3,18 +3,13 @@ var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
-// check to see if the value of the playerHealth variable is greater than 0
-if (playerHealth > 0) {
-    console.log("Your player is still alive!");
-};
-
-// You can also log multiple values at once like this
-console.log(playerName, playerAttack, playerHealth);
 
 var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
+// You can also log multiple values at once like this
+console.log(playerName, playerAttack, playerHealth);
 
 var fight = function (enemyName) {
     while (playerHealth > 0 && enemyHealth > 0) {
@@ -82,11 +77,10 @@ for (var i = 0; i < enemyNames.length; i++) {
     
         // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
         fight(pickedEnemyName);
-      }else {
+    }
+    
+    else {
         window.alert("You have lost your robot in battle! Game Over!");
         break;
     }
-    var pickedEnemyName = enemyNames[i];
-    enemyHealth = 50;
-    fight(enemyNames[i]);
 }
