@@ -57,50 +57,61 @@ var fight = function (enemy) {
     }
 };
 
+var getPlayerName = function () {
+    var name = "";
+
+    while (name === "" || name === null) {
+        name = prompt("What is your robot's name?");
+    };
+
+    console.log("Your robot's name is " + name);
+    return name;
+};
+
 var playerInfo = {
-    name: window.prompt("What is your robot's name?"),
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
-    reset: function() {
+    reset: function () {
         this.health = 100;
         this.money = 10;
         this.attack = 10;
     }, // comma!
-    refillHealth: function() {
+    refillHealth: function () {
         if (this.money >= 7) {
             window.alert("Refilling player's health by 20 for 7 dollars.");
             this.health += 20;
             this.money -= 7;
-          } 
-          else {
+        }
+        else {
             window.alert("You don't have enough money!");
-          }
-        },
-    upgradeAttack: function() {
+        }
+    },
+    upgradeAttack: function () {
         if (this.money >= 7) {
             window.alert("Upgrading player's attack by 6 for 7 dollars.");
             this.attack += 6;
             this.money -= 7;
-          } 
-          else {
-            window.alert("You don't have enough money!");
-          }
         }
+        else {
+            window.alert("You don't have enough money!");
+        }
+    }
 };
 
 var enemyInfo = [
     {
-      name: "Roborto",
-      attack: randomNumber(10, 14)
+        name: "Roborto",
+        attack: randomNumber(10, 14)
     },
     {
-      name: "Amy Android",
-      attack: randomNumber(10, 14)
+        name: "Amy Android",
+        attack: randomNumber(10, 14)
     },
     {
-      name: "Robo Trumble",
-      attack: randomNumber(10, 14)
+        name: "Robo Trumble",
+        attack: randomNumber(10, 14)
     }
 ];
 
@@ -112,6 +123,7 @@ var startGame = function () {
         if (playerInfo.health > 0) {
             // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
             window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
+            //debugger;
             // pick new enemy to fight based on the index of the enemyNames array
             var pickedEnemyObj = enemyInfo[i];
             // reset enemy.health before starting new fight
